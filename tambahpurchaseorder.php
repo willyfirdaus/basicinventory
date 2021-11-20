@@ -8,7 +8,7 @@ if ( isset ($_POST["submit"])) {
     if (tambah($_POST) > 0) {
         echo "<script>
         alert('data berhasil di tambahkan');
-        document.location.href = 'tambahpurchaseorder.php';
+      
         </script>
         ";
     } else {
@@ -46,7 +46,22 @@ if ( isset ($_POST["submit"])) {
 
            kali = nilai1*nilai2;
               
-              document.getElementById("amount").value =  kali;
+              document.getElementById("nilai_barang_usd").value =  kali;
+        }
+          </script>
+
+
+<script type="text/javascript">
+           
+           function tambah2(){
+                
+           nilai1 = document.getElementById("currency_rate").value;
+                        
+           nilai2 = document.getElementById("nilai_barang_usd").value;
+
+           kali = nilai1*nilai2;
+              
+              document.getElementById("nilai_barang_idr").value =  kali;
         }
           </script>
 
@@ -64,6 +79,8 @@ if ( isset ($_POST["submit"])) {
             if (str.length == 0) {
                 document.getElementById("deskripsi").value = "";
                 document.getElementById("hs_code").value = "";
+                document.getElementById("satuan").value = "";
+                document.getElementById("asal").value = "";
                 return;
             }
             else {
@@ -88,14 +105,16 @@ if ( isset ($_POST["submit"])) {
                         document.getElementById
                         ("deskripsi").value = myObj[0];
 
-                            // Returns the response data as a
-                        // string and store this array in
-                        // a variable assign the value 
-                        // received to hs code input field
                           
                         document.getElementById
                         ("hs_code").value = myObj[1];
 
+                        document.getElementById
+                        ("satuan").value = myObj[3];
+
+                        document.getElementById
+                        ("asal").value = myObj[4];
+                      
 
                      
                     }
@@ -127,6 +146,8 @@ if ( isset ($_POST["submit"])) {
 <input type="hidden" name="qty_real" id="qty_real">
 <input type="hidden" name="lokasi_gudang" id="lokasi_gudang">
 <input type="hidden" name="tanggal_diterima" id="tanggal_diterima">
+<input type="hidden" name="nomor_bukti_penerimaan" id="nomor_bukti_penerimaan">
+<input type="hidden" name="rate" id="rate">
 
 
 <ul>
@@ -183,6 +204,12 @@ if ( isset ($_POST["submit"])) {
 </li>
 
 
+<li>
+    <label for="satuan">satuan:</label>
+    <input type="text" name="satuan" 
+    id="satuan" required >
+</li>
+
 
 <li>
     <label for="qty">qty :</label>
@@ -205,6 +232,13 @@ if ( isset ($_POST["submit"])) {
 </select>
 </li>
 
+<li>
+    <label for="currency_rate">currency rate : ( isikan sesuai curency yang berlaku di hari penginputan pada link </label><a href="https://www.beacukai.go.id/kurs.html" target='_blank'>https://www.beacukai.go.id/kurs.html </a>)
+    <br>
+    <input type="number" name="currency_rate" id="currency_rate" required > 
+</li>
+
+
 
 <li>
     <label for="price">price :</label>
@@ -213,14 +247,25 @@ if ( isset ($_POST["submit"])) {
 
 <!-- ambil fungsi perkalian antara qty & price -->
 <li>
-    <label for="amount">amount :</label>
-    <input type="text" name="amount" id="amount" readonly required><button type="button" id="btnHitung" value="Test" onclick="tambah();">=</button>
+    <label for="nilai_barang_usd">nilai barang USD :</label>
+    <input type="text" name="nilai_barang_usd" id="nilai_barang_usd" readonly required><button type="button" id="btnHitung" value="Test" onclick="tambah();">=</button>
+</li>
+
+<li>
+    <label for="nilai_barang_idr">nilai barang IDR :</label>
+    <input type="text" name="nilai_barang_idr" id="nilai_barang_idr" readonly required><button type="button" id="btnHitung" value="Test" onclick="tambah2();">=</button>
 </li>
 
 
 <li>
  <label for="hs_code">hs code:</label>
- <input type="text" name="hs_code" id="hs_code" readonly required >
+ <input type="text" name="hs_code" id="hs_code" required >
+</li>
+
+<li>
+    <label for="asal">asal:</label>
+    <input type="text" name="asal" 
+    id="asal" required >
 </li>
 
 

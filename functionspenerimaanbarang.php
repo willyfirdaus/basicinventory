@@ -34,6 +34,7 @@ function ubah ($data) {
     global $db;
     //ambil data dari tiap elemen form
 $id = ($data["id"]);
+$nomor_bukti_penerimaan = htmlspecialchars ($data["nomor_bukti_penerimaan"]);
 $qty_real = htmlspecialchars ($data["qty_real"]);
 $lokasi_gudang = htmlspecialchars ($data["lokasi_gudang"]);
 $tanggal_diterima = htmlspecialchars ($data["tanggal_diterima"]);
@@ -43,6 +44,8 @@ $tanggal_diterima = htmlspecialchars ($data["tanggal_diterima"]);
 
 //query insert data ke data base
 $query = "UPDATE purchaseorder SET
+
+        nomor_bukti_penerimaan ='$nomor_bukti_penerimaan',
         qty_real ='$qty_real',
         lokasi_gudang = '$lokasi_gudang',
         tanggal_diterima = '$tanggal_diterima'
@@ -61,7 +64,8 @@ function cari ($keyword) {
     $query = "SELECT * FROM purchaseorder
     WHERE
     no_po LIKE '%$keyword%' OR
-    no_kontrak LIKE '%$keyword%'
+    kode LIKE '%$keyword%' OR
+    no_invoice LIKE '%$keyword%'
     ";
     return query ($query);
 }

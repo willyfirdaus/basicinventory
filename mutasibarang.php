@@ -13,10 +13,17 @@ function KodeMaterial()
     $data = queryObject("SELECT * FROM penerimaanpesanan");
     $data2 = queryObject("SELECT * FROM purchaseorder");
     $data3 = queryObject("SELECT * FROM requestproduksi");
+    
     foreach ($data2 as $key => $value)
     {
         array_push($data, $value );
     }
+
+    foreach ($data3 as $key => $value)
+    {
+        array_push($data, $value );
+    }
+    
     return $data;
 }
 

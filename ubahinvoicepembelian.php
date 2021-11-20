@@ -15,13 +15,13 @@ if ( isset ($_POST["submit"])) {
 
     if (ubah($_POST) > 0) {
         echo "<script>
-        alert('invoice berhasil di rubah');
+        alert('invoice berhasil di tambahkan');
         document.location.href = 'invoicepembelian.php';
         </script>
         ";
     } else {
         echo "<script>
-        alert('invoice gagal di rubah perika kembali');
+        alert('invoice gagal di tambahkan perika kembali');
         document.location.href = 'invoicepembelian.php';
         </script>
         ";
@@ -45,13 +45,27 @@ if ( isset ($_POST["submit"])) {
            
            function tugas(){
                 
-           nilai1 = document.getElementById("qty").value;
+           nilai1 = document.getElementById("price").value;
                         
-           nilai2 = document.getElementById("price").value;
+           nilai2 = document.getElementById("qty_finish_good").value;
 
            kali = nilai1*nilai2;
               
-              document.getElementById("amount").value =  kali;
+              document.getElementById("amount_usd").value =  kali;
+        }
+          </script>
+
+<script type="text/javascript">
+           
+           function tugas1(){
+                
+           nilai1 = document.getElementById("currency_rate").value;
+                        
+           nilai2 = document.getElementById("amount_usd").value;
+
+           kali = nilai1*nilai2;
+              
+              document.getElementById("amount_idr").value =  kali;
         }
           </script>
 
@@ -118,6 +132,52 @@ if ( isset ($_POST["submit"])) {
     <form action="" method="post"> 
         <input type="hidden" name="id" value="<?= $data ["id"] ; ?>">
 <ul> 
+
+<li>
+    <label for="no_po">No P.O.:</label>
+    <input type="text" name="no_po" id="no_po" readonly
+    value ="<?= $data ["no_po"] ?>">
+</li>
+
+<li>
+        <label for="kode">kode </label>
+        <input type='text' name="kode" 
+        id='kode' class='form-control' readonly
+        value ="<?= $data ["kode"] ?>" >
+ </li>
+
+ <li>
+    <label for="deskripsi">deskripsi :</label>
+    <input type="text" name="deskripsi" id="deskripsi" readonly
+    value ="<?= $data ["deskripsi"] ?>">    
+</li>
+
+<li>
+        <label for="qty">qty </label>
+    <input type='text' name="qty" funt
+        id='qty' class='form-control' readonly
+        value ="<?= $data ["qty"] ?>" >
+ </li>
+
+<li>
+        <label for="nilai_barang_usd">nilai barang USD </label>
+        <input type='text' name="nilai_barang_usd" 
+        id='nilai_barang_usd' class='form-control' readonly
+        value ="<?= $data ["nilai_barang_usd"] ?>" >
+ </li>
+
+<li>
+        <label for="nilai_barang_idr">nilai barang IDR </label>
+        <input type='text' name="nilai_barang_idr" 
+        id='nilai_barang_idr' class='form-control' readonly
+        value ="<?= $data ["nilai_barang_idr"] ?>" >
+ </li>
+
+
+
+
+<br><br><br>
+
 <li>
     <label for="no_invoice">No Invoice:</label>
     <input type="text" name="no_invoice" id="no_invoice" 
@@ -130,6 +190,9 @@ if ( isset ($_POST["submit"])) {
     value ="<?= $data ["tanggal_invoice"] ?>"> Isikan tanggal invoice
     </form>
     </li>
+
+
+    
 <br>
 
 <button onclick="tambah();" name="submit" >simpan Data</button>

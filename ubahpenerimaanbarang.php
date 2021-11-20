@@ -15,13 +15,13 @@ if ( isset ($_POST["submit"])) {
 
     if (ubah($_POST) > 0) {
         echo "<script>
-        alert('penerimaan berhasil di ubah');
+        alert('Detail penerimaan di tambahkan');
         document.location.href = 'penerimaanbarang.php';
         </script>
         ";
     } else {
         echo "<script>
-        alert('penerimaan berhasil gagal di ubah perika kembali');
+        alert('Detail penerimaan gagal di tambahkan periksa kembali');
         document.location.href = 'penerimaanbarang.php';
         </script>
         ";
@@ -38,7 +38,7 @@ if ( isset ($_POST["submit"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ubah penerimaan barang</title>
+    <title>Tambah No invoice untuk P.O.</title>
 
 
     <script type="text/javascript">
@@ -114,17 +114,54 @@ if ( isset ($_POST["submit"])) {
 
 </head>
 <body>
-    <h1>ubah penerimaan barang</h1>
+    <h1>Tambah Detail Penerimaan Barang</h1>
     <form action="" method="post"> 
         <input type="hidden" name="id" value="<?= $data ["id"] ; ?>">
 <ul> 
 
+<li>
+    <label for="no_invoice">no_invoice </label>
+    <input type='text' name="no_invoice" 
+        id='no_invoice' class='form-control' readonly
+        value ="<?= $data ["no_invoice"] ?>" >
+ </li>
+<li>
+    <label for="no_po">no_po </label>
+    <input type='text' name="no_po" 
+        id='no_po' class='form-control' readonly
+        value ="<?= $data ["no_po"] ?>" >
+ </li>
+<li>
+    <label for="kode">kode </label>
+    <input type='text' name="kode" 
+        id='kode' class='form-control' readonly
+        value ="<?= $data ["kode"] ?>" >
+ </li>
+<li>
+    <label for="deskripsi">deskripsi </label>
+    <input type='text' name="deskripsi" 
+        id='deskripsi' class='form-control' readonly
+        value ="<?= $data ["deskripsi"] ?>" >
+ </li>
+
+
+
+
+
+
+<br><br>
+
+<li>
+    <label for="nomor_bukti_penerimaan">nomor bukti penerimaan:</label>
+    <input type="text" name="nomor_bukti_penerimaan" id="nomor_bukti_penerimaan" 
+    value ="<?= $data ["nomor_bukti_penerimaan"] ?>">
+</li>
 
 <li>
     <form >
     <label for="tanggal_diterima">tanggal diterima :</label>
-    <input value="2021-01-01" name='tanggal_diterima' type='date' class="form-control"  id="tanggal_diterima"
-    value ="<?= $data ["tanggal_diterima"] ?>" required> 
+    <input name='tanggal_diterima' type='date' class="form-control"  id="tanggal_diterima"
+    value ="<?= $data ["tanggal_diterima"] ?>"> 
     </form>
 </li>
 

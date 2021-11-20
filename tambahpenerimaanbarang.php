@@ -120,9 +120,49 @@ if ( isset ($_POST["submit"])) {
 <ul> 
 
 <li>
+    <label for="no_invoice">no_invoice </label>
+    <input type='text' name="no_invoice" 
+        id='no_invoice' class='form-control' readonly
+        value ="<?= $data ["no_invoice"] ?>" >
+ </li>
+<li>
+    <label for="no_po">no_po </label>
+    <input type='text' name="no_po" 
+        id='no_po' class='form-control' readonly
+        value ="<?= $data ["no_po"] ?>" >
+ </li>
+<li>
+    <label for="kode">kode </label>
+    <input type='text' name="kode" 
+        id='kode' class='form-control' readonly
+        value ="<?= $data ["kode"] ?>" >
+ </li>
+<li>
+    <label for="deskripsi">deskripsi </label>
+    <input type='text' name="deskripsi" 
+        id='deskripsi' class='form-control' readonly
+        value ="<?= $data ["deskripsi"] ?>" >
+ </li>
+
+
+
+
+
+
+<br><br>
+
+
+<li>
+    <label for="nomor_bukti_penerimaan">nomor bukti penerimaan:</label>
+    <input type="text" name="nomor_bukti_penerimaan" id="nomor_bukti_penerimaan" 
+    value ="<?= $data ["nomor_bukti_penerimaan"] ?>">
+</li>
+
+
+<li>
     <form >
     <label for="tanggal_diterima">tanggal diterima :</label>
-    <input value="2021-01-01" name='tanggal_diterima' type='date' class="form-control"  id="tanggal_diterima"
+    <input name='tanggal_diterima' type='date' class="form-control"  id="tanggal_diterima"
     value ="<?= $data ["tanggal_diterima"] ?>"> 
     </form>
 </li>

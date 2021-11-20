@@ -54,6 +54,7 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <table  border="5" cellpadding="10" cellspacing="10" >
 <tr bgcolor="Cornsilk"  >
     <th>No</th>  
+    <th>nomor bukti penerimaan</th>    
     <th>Tanggal diterima</th>    
     <th>Lokasi gudang</th>    
     <th>Qty real</th>      
@@ -68,6 +69,7 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <?php foreach ( $arrays as $array ) : ?>
 <tr>
 <td><?= $i ?> </td>  
+ <td><?=$array["nomor_bukti_penerimaan"];?></td> 
  <td><?=$array["tanggal_diterima"];?></td> 
  <td><?=$array["lokasi_gudang"];?></td>   
  <td><?=$array["qty_real"];?></td>   

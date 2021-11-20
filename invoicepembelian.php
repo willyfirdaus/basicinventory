@@ -55,9 +55,10 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <tr bgcolor="Cornsilk"  >
     <th>No</th>  
     <th>No invoice</th>    
-    <th>No P.O.</th>      
     <th>Tanggal invoice</th>
+    <th>No P.O.</th>      
     <th>kode barang</th>
+    <th>deskripsi</th>
     <th>Supplier</th>
 </tr>
 
@@ -66,11 +67,12 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <?php foreach ( $arrays as $array ) : ?>
 <tr>
 <td><?= $i ?> </td>  
- <td><?=$array["13"];?></td> 
- <td><?=$array["1"];?></td>   
- <td><?=$array["14"];?></td>   
- <td><?=$array["6"];?></td>
- <td><?=$array["4"];?></td>     
+ <td><?=$array["no_invoice"];?></td> 
+ <td><?=$array["tanggal_invoice"];?></td>   
+ <td><?=$array["no_po"];?></td>   
+ <td><?=$array["kode"];?></td>
+ <td><?=$array["deskripsi"];?></td>
+ <td><?=$array["supplier"];?></td>     
  <td>
      <!-- tag konfirmasi untuk ubah data -->
      <a href="tambahinvoicepembelian.php?id=<?= $array["id"]; ?>">Tambah No Invoice /</a>

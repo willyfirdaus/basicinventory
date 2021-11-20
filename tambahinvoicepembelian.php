@@ -139,6 +139,7 @@ if ( isset ($_POST["submit"])) {
     value ="<?= $data ["no_po"] ?>">
 </li>
 
+
 <li>
         <label for="kode">kode </label>
         <input type='text' name="kode" 
@@ -146,11 +147,34 @@ if ( isset ($_POST["submit"])) {
         value ="<?= $data ["kode"] ?>" >
  </li>
 
-<li>
+ <li>
     <label for="deskripsi">deskripsi :</label>
     <input type="text" name="deskripsi" id="deskripsi" readonly
     value ="<?= $data ["deskripsi"] ?>">    
 </li>
+
+<li>
+        <label for="qty">qty </label>
+    <input type='text' name="qty" funt
+        id='qty' class='form-control' readonly
+        value ="<?= $data ["qty"] ?>" >
+ </li>
+
+<li>
+        <label for="nilai_barang_usd">nilai barang USD </label>
+        <input type='text' name="nilai_barang_usd" 
+        id='nilai_barang_usd' class='form-control' readonly
+        value ="<?= $data ["nilai_barang_usd"] ?>" >
+ </li>
+
+<li>
+        <label for="nilai_barang_idr">nilai barang IDR </label>
+        <input type='text' name="nilai_barang_idr" 
+        id='nilai_barang_idr' class='form-control' readonly
+        value ="<?= $data ["nilai_barang_idr"] ?>" >
+ </li>
+
+
 
 
 <br><br><br>
@@ -167,37 +191,6 @@ if ( isset ($_POST["submit"])) {
     value ="<?= $data ["tanggal_invoice"] ?>"> Isikan tanggal invoice
     </form>
     </li>
-
-
-<li>
-    <label for="rate">currency rate : ( isikan sesuai curency yang berlaku di hari penginputan pada link </label><a href="https://www.beacukai.go.id/kurs.html" target='_blank'>https://www.beacukai.go.id/kurs.html </a>)
-    <br>
-    <input type="text" name="rate" id="rate"
-    value ="<?= $data ["rate"] ?>">    
-</li>
-
-
-<li>
-    <label for="price">price:</label>
-    <input type="text" name="price" id="price"
-    value ="<?= $data ["price"] ?>">    
-</li>
-
-
-
-<li>
-    <label for="nilai_barang_usd">nilai barang USD & :</label>
-   $ <input type="text" name="nilai_barang_usd" id="nilai_barang_usd"
-    value ="<?= $data ["nilai_barang_usd"] ?>"> <button type="button" id="btnHitung" value="Test" onclick="tugas();">=</button>   
-</li>
-<li>
-    <label for="nilai_barang_rp">nilai barang IDR Rp :</label>
-   Rp <input type="text" name="nilai_barang_rp" id="nilai_barang_rp"
-    value ="<?= $data ["nilai_barang_rp"] ?>"> <button type="button" id="btnHitung" value="Test" onclick="tugas1();">=</button>
-</li>
-
-
-
 
 
     

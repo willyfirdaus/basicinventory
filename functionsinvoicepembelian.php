@@ -52,8 +52,9 @@ return mysqli_affected_rows ($db) ;
 function cari ($keyword) {
     $query = "SELECT * FROM purchaseorder
     WHERE
+    kode LIKE '%$keyword%' OR
     no_po LIKE '%$keyword%' OR
-    no_kontrak LIKE '%$keyword%'
+    no_invoice LIKE '%$keyword%'
     ";
     return query ($query);
 }

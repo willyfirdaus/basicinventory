@@ -59,7 +59,8 @@ function cari ($keyword) {
     $query = "SELECT * FROM purchaseorder
     WHERE
     no_po LIKE '%$keyword%' OR
-    no_kontrak LIKE '%$keyword%'
+    kode LIKE '%$keyword%' OR
+    no_invoice LIKE '%$keyword%'
     ";
     return query ($query);
 }

@@ -73,16 +73,16 @@ placeholder ="masukan data pencarian" autocomplete="off">
  <td><?=$array1["status_bc"];?></td> 
  <td><?=$array1["no_pendaftaran"];?></td> 
  <td><?=$array1["tanggal"];?></td> 
- <td> nomor bukti pengeluaran belum isi </td> 
- <td>Tanggal Bukti Pengeluaran belum isi</td> 
- <td>hs code belum isi</td> 
+ <td><?=$array1["nomor_bukti_pengeluaran"];?></td> 
+ <td><?=$array1["tanggal_bukti_pengeluaran"];?></td> 
+ <td><?=$array1["hs_code"];?></td> 
  <td><?=$array1["deskripsi"];?></td>
  <td><?=$array1["qty_finish_good"];?></td>
- <td>kode satuan belum isi</td>
+ <td><?=$array1["kode_satuan"];?></td>
  <td><?=$array1["amount_idr"];?></td>
  <td><?=$array1["currency_rate"];?></td>
  <td><?=$array1["amount_usd"];?></td>
- <td>asal barang belum isi</td>
+ <td><?=$array1["asal_barang"];?></td>
  <td><?=$array1["deskripsi"];?></td>
  <td><?=$array1["kode"];?></td>
  <td><?=$array1["buyer"];?></td>

@@ -39,59 +39,95 @@ if ( isset ($_POST["submit"])) {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ubah purchase order</title>
+    <script >
+           
+           function tambah(){
+                
+           nilai1 = document.getElementById("qty").value;
+                        
+           nilai2 = document.getElementById("price").value;
+
+           kali = nilai1*nilai2;
+              
+              document.getElementById("nilai_barang_usd").value =  kali;
+        }
+          </script>
+
+
+<script type="text/javascript">
+           
+           function tambah2(){
+                
+           nilai1 = document.getElementById("currency_rate").value;
+                        
+           nilai2 = document.getElementById("nilai_barang_usd").value;
+
+           kali = nilai1*nilai2;
+              
+              document.getElementById("nilai_barang_idr").value =  kali;
+        }
+          </script>
 
 
     <!-- sciprt untuk tarik kode barang dan hs code untuk fungsi kode, deskripsi, dan hs code dari DB master -->
-<script>
+    <script>
   
-        // onkeyup event will occur when the user 
-        // release the key and calls the function
-        // assigned to this event
-        function GetDetail(str) {
-            if (str.length == 0) {
-                document.getElementById("deskripsi").value = "";
-                return;
-            }
-            else {
-  
-                // Creates a new XMLHttpRequest object
-                var xmlhttp = new XMLHttpRequest();
-                xmlhttp.onreadystatechange = function () {
-  
-                    // Defines a function to be called when
-                    // the readyState property changes
-                    if (this.readyState == 4 && 
-                            this.status == 200) {
-                          
-                        // Typical action to be performed
-                        // when the document is ready
-                        var myObj = JSON.parse(this.responseText);
-  
-                       
-                        
-                        // Assign the value received to
-                        // deskripsi input field
-                        document.getElementById
-                        ("deskripsi").value = myObj[0];
+  // onkeyup event will occur when the user 
+  // release the key and calls the function
+  // assigned to this event
+  function GetDetail(str) {
+      if (str.length == 0) {
+          document.getElementById("deskripsi").value = "";
+          document.getElementById("hs_code").value = "";
+          document.getElementById("satuan").value = "";
+          document.getElementById("asal").value = "";
+          return;
+      }
+      else {
 
-                            // Returns the response data as a
-                        // string and store this array in
-                        // a variable assign the value 
-                        // received to hs code input field
+          // Creates a new XMLHttpRequest object
+          var xmlhttp = new XMLHttpRequest();
+          xmlhttp.onreadystatechange = function () {
 
+              // Defines a function to be called when
+              // the readyState property changes
+              if (this.readyState == 4 && 
+                      this.status == 200) {
+                    
+                  // Typical action to be performed
+                  // when the document is ready
+                  var myObj = JSON.parse(this.responseText);
 
-                     
-                    }
-                };
-  
-                // xhttp.open("GET", "ambil data pada file", true);
-                xmlhttp.open("GET", "tarikdatapurchaseorder.php?kode_material=" + str, true);
+                 
                   
-                // Sends the request to the server
-                xmlhttp.send();
-            }
-        }
-    </script>
+                  // Assign the value received to
+                  // deskripsi input field
+                  document.getElementById
+                  ("deskripsi").value = myObj[0];
+
+                    
+                  document.getElementById
+                  ("hs_code").value = myObj[1];
+
+                  document.getElementById
+                  ("satuan").value = myObj[3];
+
+                  document.getElementById
+                  ("asal").value = myObj[4];
+                
+
+               
+              }
+          };
+
+          // xhttp.open("GET", "ambil data pada file", true);
+          xmlhttp.open("GET", "tarikdatapurchaseorder.php?kode_material=" + str, true);
+            
+          // Sends the request to the server
+          xmlhttp.send();
+      }
+  }
+</script>
 
 
 </head>
@@ -99,10 +135,7 @@ if ( isset ($_POST["submit"])) {
     <h1>Ubah purchase order</h1>
     <form action="" method="post"> 
         <!-- saat ubah data setiap row harus ada isi tiap field data base yang tidak ingin di rubah simpan sebagai hiden-->
-        <input type="hidden" name="id" value="<?= $data ["id"] ; ?>">
-        <input type="hidden" name="no_invoice" value="<?= $data ["no_invoice"] ; ?>">
-        <input type="hidden" name="tanggal_invoice" value="<?= $data ["tanggal_invoice"] ; ?>">    
-          <!-- saat ubah data setiap row harus ada isi tiap field data base -->         
+        <input type="hidden" name="id" value="<?= $data ["id"] ; ?>">        
 <ul> 
 <li>
     <label for="no_po">No P.O.:</label>
@@ -154,6 +187,13 @@ if ( isset ($_POST["submit"])) {
 </li>
 
 <li>
+    <label for="satuan">satuan :</label>
+    <input type="text" name="satuan" id="satuan"
+    value ="<?= $data ["satuan"] ?>">    
+</li>
+
+
+<li>
     <label for="qty">qty :</label>
     <input type="number" name="qty" id="qty"
     value ="<?= $data ["qty"] ?>">    
@@ -175,21 +215,41 @@ if ( isset ($_POST["submit"])) {
 </li>
 
 <li>
+    <label for="currency_rate">currency rate : ( isikan sesuai curency yang berlaku di hari penginputan pada link </label><a href="https://www.beacukai.go.id/kurs.html" target='_blank'>https://www.beacukai.go.id/kurs.html </a>)
+    <br>
+    <input type="number" name="currency_rate" id="currency_rate" value ="<?= $data ["currency_rate"] ?>"> 
+</li>
+
+
+<li>
     <label for="price">price :</label>
     <input type="number" name="price" id="price" 
     value ="<?= $data ["price"] ?>">    
 </li>
 
 <li>
-    <label for="amount">amount :</label>
-    <input type="text" name="amount" id="amount" 
-    value ="<?= $data ["amount"] ?>"> <button type="button" id="btnHitung" value="Test" onclick="tugas();">=</button> 
+    <label for="nilai_barang_usd">nilai barang usd :</label>
+    <input type="text" name="nilai_barang_usd" id="nilai_barang_usd" 
+    value ="<?= $data ["nilai_barang_usd"] ?>"> <button type="button" id="btnHitung" value="Test" onclick="tambah();">=</button> 
 </li>
+
+<li>
+    <label for="nilai_barang_idr">nilai barang idr :</label>
+    <input type="text" name="nilai_barang_idr" id="nilai_barang_idr" 
+    value ="<?= $data ["nilai_barang_idr"] ?>"> <button type="button" id="btnHitung" value="Test" onclick="tambah2();">=</button> 
+</li>
+
 
 <li>
     <label for="hs_code" >hs code :</label>
     <input type="text" name="hs_code" id="hs_code" readonly
     value ="<?= $data ["hs_code"] ?>">    
+</li>
+
+<li>
+    <label for="asal" >asal :</label>
+    <input type="text" name="asal" id="asal" readonly
+    value ="<?= $data ["asal"] ?>">    
 </li>
 
 

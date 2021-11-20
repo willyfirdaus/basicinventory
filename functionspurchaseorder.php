@@ -43,8 +43,10 @@ $kode = htmlspecialchars ($data["kode"]);
 $deskripsi = htmlspecialchars ($data["deskripsi"]);
 $qty = htmlspecialchars ($data["qty"]);
 $currency = htmlspecialchars ($data["currency"]);
+$currency_rate = htmlspecialchars ($data["currency_rate"]);
 $price = htmlspecialchars ($data["price"]);
-$amount = htmlspecialchars ($data["amount"]);
+$nilai_barang_usd = htmlspecialchars ($data["nilai_barang_usd"]);
+$nilai_barang_idr = htmlspecialchars ($data["nilai_barang_idr"]);
 $hs_code = htmlspecialchars ($data["hs_code"]);
 $no_invoice = htmlspecialchars ($data["no_invoice"]);
 $tanggal_invoice = htmlspecialchars ($data["tanggal_invoice"]);
@@ -56,13 +58,40 @@ $no_surat_jalan = htmlspecialchars ($data["no_surat_jalan"]);
 $qty_real = htmlspecialchars ($data["qty_real"]);
 $lokasi_gudang = htmlspecialchars ($data["lokasi_gudang"]);
 $tanggal_diterima = htmlspecialchars ($data["tanggal_diterima"]);
+$nomor_bukti_penerimaan = htmlspecialchars ($data["nomor_bukti_penerimaan"]);
+$satuan = htmlspecialchars ($data["satuan"]);
+$asal = htmlspecialchars ($data["asal"]);
 
 //query insert data ke data base
 $query = "INSERT INTO purchaseorder
             VALUES
-        ('','$no_po','$tanggal_po', '$supplier','$no_kontrak','$kode'
-        ,'$deskripsi','$qty','$currency','$price','$amount','$hs_code','$no_invoice','$tanggal_invoice','$status_bc',
-        '$no_aju','$no_pendaftaran','$tanggal_bcmasuk','$no_surat_jalan' ,'$qty_real' ,'$lokasi_gudang' ,'$tanggal_diterima')
+        ('',
+        '$no_po',
+        '$tanggal_po',
+        '$supplier',
+        '$no_kontrak',
+        '$kode',
+        '$deskripsi',
+        '$qty',
+        '$currency',
+        '$currency_rate',
+        '$price',
+        '$nilai_barang_usd',
+        '$nilai_barang_idr',
+        '$hs_code',
+        '$no_invoice',
+        '$tanggal_invoice',
+        '$status_bc',
+        '$no_aju',
+        '$no_pendaftaran',
+        '$tanggal_bcmasuk',
+        '$no_surat_jalan',
+        '$qty_real' ,
+        '$lokasi_gudang',
+        '$tanggal_diterima',
+        '$nomor_bukti_penerimaan',
+        '$satuan',
+        '$asal')
             ";
 mysqli_query ($db,$query);   
 return mysqli_affected_rows ($db) ;
@@ -86,21 +115,22 @@ return mysqli_affected_rows ($db) ;
 function ubah ($data) {
     global $db;
     //ambil data dari tiap elemen form
-$id = ($data["id"]);
-$no_po = htmlspecialchars ($data["no_po"]);
-$tanggal_po = htmlspecialchars ($data["tanggal_po"]);
-$supplier = htmlspecialchars ($data["supplier"]);
-$no_kontrak = htmlspecialchars ($data["no_kontrak"]);
-$kode = htmlspecialchars ($data["kode"]);
-$deskripsi = htmlspecialchars ($data["deskripsi"]);
-$qty = htmlspecialchars ($data["qty"]);
-$currency = htmlspecialchars ($data["currency"]);
-$price = htmlspecialchars ($data["price"]);
-$amount = htmlspecialchars ($data["amount"]);
-$hs_code = htmlspecialchars ($data["hs_code"]);
-$no_invoice = htmlspecialchars ($data["no_invoice"]);
-$tanggal_invoice = htmlspecialchars ($data["tanggal_invoice"]);
-
+    $id = ($data["id"]);
+    $no_po = htmlspecialchars ($data["no_po"]);
+    $tanggal_po = htmlspecialchars ($data["tanggal_po"]);
+    $supplier =htmlspecialchars ($data["supplier"]);
+    $no_kontrak = htmlspecialchars ($data["no_kontrak"]);
+    $kode = htmlspecialchars ($data["kode"]);
+    $deskripsi = htmlspecialchars ($data["deskripsi"]);
+    $satuan = htmlspecialchars ($data["satuan"]);
+    $qty = htmlspecialchars ($data["qty"]);
+    $currency = htmlspecialchars ($data["currency"]);
+    $currency_rate = htmlspecialchars ($data["currency_rate"]);
+    $price = htmlspecialchars ($data["price"]);
+    $nilai_barang_usd = htmlspecialchars ($data["nilai_barang_usd"]);
+    $nilai_barang_idr = htmlspecialchars ($data["nilai_barang_idr"]);
+    $hs_code = htmlspecialchars ($data["hs_code"]);
+    $asal = htmlspecialchars ($data["asal"]);
 
 
 
@@ -112,13 +142,15 @@ $query = "UPDATE purchaseorder SET
         no_kontrak ='$no_kontrak',
         kode = '$kode',
         deskripsi = '$deskripsi',
+        satuan = '$satuan',
         qty = '$qty',
         currency = '$currency',
+        currency_rate = '$currency_rate',
         price = '$price',
-        amount = '$amount',
+        nilai_barang_usd = '$nilai_barang_usd',
+        nilai_barang_idr = '$nilai_barang_idr',
         hs_code = '$hs_code',
-        no_invoice = '$no_invoice',
-        tanggal_invoice = '$tanggal_invoice'
+        asal = '$asal'
         
             WHERE id = $id 
             ";
@@ -133,6 +165,7 @@ function cari ($keyword) {
     $query = "SELECT * FROM purchaseorder
     WHERE
     no_po LIKE '%$keyword%' OR
+    kode LIKE '%$keyword%' OR
     no_kontrak LIKE '%$keyword%'
     ";
     return query ($query);

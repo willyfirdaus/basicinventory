@@ -61,10 +61,13 @@ placeholder ="masukan data pencarian" autocomplete="off">
     <th>No P.O.</th>      
     <th>Tanggal</th>
     <th>kode</th>
+    <th>Deskripsi</th>
     <th>qty</th>
     <th>currency</th>
     <th>Harga</th>
-    <th>Amount</th>
+    <th>Nilai Barang USD</th>
+    <th>Nilai Barang IDR</th>
+    
 </tr>
 
 
@@ -72,13 +75,15 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <?php foreach ( $arrays as $array ) : ?>
 <tr>
 <td><?= $i ?> </td>  
- <td><?=$array["1"];?></td>   
- <td><?=$array["2"];?></td>   
- <td><?=$array["6"];?></td>    
- <td><?=$array["8"];?></td>    
- <td><?=$array["9"];?></td>    
- <td><?=$array["10"];?></td>    
- <td><?=$array["11"];?></td>    
+ <td><?=$array["no_po"];?></td>   
+ <td><?=$array["tanggal_po"];?></td>   
+ <td><?=$array["kode"];?></td>    
+ <td><?=$array["deskripsi"];?></td>    
+ <td><?=$array["qty"];?></td>    
+ <td><?=$array["currency"];?></td>    
+ <td><?=$array["price"];?></td>    
+ <td><?=$array["nilai_barang_usd"];?></td>    
+ <td><?=$array["nilai_barang_idr"];?></td>    
  <td>
      <!-- tag konfirmasi untuk ubah data -->
      <a href="ubahpurchaseorder.php?id=<?= $array["id"]; ?>">ubah /</a>

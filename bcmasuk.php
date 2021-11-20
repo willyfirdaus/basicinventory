@@ -60,12 +60,14 @@ placeholder ="masukan data pencarian" autocomplete="off">
     <th>No Surat jalan/BL/AWB</th>
     <th>Tanggal masuk</th>
     <th>No Invoice</th>
+    <th>No PO</th>
     <th>Kode</th>
     <th>Deskripsi</th>
     <th>Qty</th>
     <th>Currency</th>
     <th>Price</th>
-    <th>Amount</th>
+    <th>nilai barang usd</th>
+    <th>nilai barang idr</th>
     <th>HS code</th>
 </tr>
 
@@ -74,19 +76,21 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <?php foreach ( $arrays as $array ) : ?>
 <tr>
 <td><?= $i ?> </td>  
- <td><?=$array["15"];?></td> 
- <td><?=$array["16"];?></td>   
- <td><?=$array["17"];?></td>   
- <td><?=$array["no_surat_jalan"];?></td>     
- <td><?=$array["18"];?></td>
- <td><?=$array["13"];?></td>     
- <td><?=$array["6"];?></td>     
- <td><?=$array["7"];?></td>     
- <td><?=$array["8"];?></td>     
- <td><?=$array["9"];?></td>     
- <td><?=$array["10"];?></td>     
- <td><?=$array["11"];?></td>     
- <td><?=$array["12"];?></td>     
+ <td><?=$array["status_bc"];?></td> 
+ <td><?=$array["no_aju"];?></td>    
+ <td><?=$array["no_pendaftaran"];?></td>     
+ <td><?=$array["no_surat_jalan"];?></td>
+ <td><?=$array["tanggal_bcmasuk"];?></td>     
+ <td><?=$array["no_invoice"];?></td>     
+ <td><?=$array["no_po"];?></td>     
+ <td><?=$array["kode"];?></td>     
+ <td><?=$array["deskripsi"];?></td>     
+ <td><?=$array["qty"];?></td>     
+ <td><?=$array["currency"];?></td>     
+ <td><?=$array["price"];?></td>     
+ <td><?=$array["nilai_barang_usd"];?></td>     
+ <td><?=$array["nilai_barang_idr"];?></td>     
+ <td><?=$array["hs_code"];?></td>     
  <td>
      <!-- tag konfirmasi untuk ubah data -->
      <a href="tambahbcmasuk.php?id=<?= $array["id"]; ?>">Tambah Detail BC Masuk /</a>
