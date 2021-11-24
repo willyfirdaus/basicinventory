@@ -1,8 +1,8 @@
 <?php
 //koneksi ke database
-require 'functionspenerimaanpesanan.php';
+require 'functionsmutasipemasukan.php';
 //ambil data dari tabel basicinventory / query data basicinventory
-$arrays = query ("SELECT * FROM penerimaanpesanan ORDER BY id DESC");
+$arrays = query ("SELECT * FROM mutasibarang ORDER BY id DESC");
 
 //tombol cari di tekan
 if (isset ($_POST["cari"])) {
@@ -32,21 +32,24 @@ if (isset ($_POST["cari"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Finish Good</title>
+    <title>Mutasi Pemasukan</title>
 
     
 </head>
 <body>
 
-<h1>Finish Good</h1>
-
+<h1>Mutasi Pemasukan</h1>
+<a href="tambahmutasipemasukan.php">Tambah Mutasi Pemasukan</a>
+<h>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</h>
 <a href="index.php">Kembali ke Home</a>
 <br><br>
 <form action="" method="post">
 <input type="text" name="keyword" size="40" autocfocus
 placeholder ="masukan data pencarian" autocomplete="off">
 <button type="submit" name="cari">cari</button>
-<a href="penerimaanpesanan.php"><button type="submit" name="cari">Reset</button></a>
+<a href="mutasipemasukan.php"><button type="submit" name="cari">Reset</button></a>
  
 
 <p></p>
@@ -54,15 +57,19 @@ placeholder ="masukan data pencarian" autocomplete="off">
 </form>
 <table  border="5" cellpadding="10" cellspacing="10" >
 <tr bgcolor="Cornsilk"  >
-    <th>No</th> 
-    <th>qty finish good</th>
-    <th>tanggal finish good</th>
-    <th>Request Qty</th>
-    <th>Job Order</th>  
-    <th>Tanggal Registrasi</th>      
-    <th>Item</th>
-    <th>Deskripsi</th>
-    <th>Remark</th>
+<th>No</th>
+<th>tanggal</th>
+<th>kode material</th> 
+<th>kategori</th> 
+<th>nama barang</th> 
+<th>satuan</th> 
+<th>stok awal</th> 
+<th>stok masuk</th> 
+<th>stok keluar</th> 
+<th>penyesuaian</th> 
+<th>retur</th> 
+<th>stok final</th>
+<th>asal</th> </tr>
 </tr>
 
 
@@ -70,20 +77,26 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <?php foreach ( $arrays as $array ) : ?>
 <tr>
 <td><?= $i ?> </td>  
-<td><?=$array["qty_finish_good"];?></td>
-<td><?=$array["tanggal_finish"];?></td>
-<td><?=$array["request_qty"];?></td>  
-<td><?=$array["job_order"];?></td> 
- <td><?=$array["tanggal_registrasi"];?></td>   
- <td><?=$array["kode"];?></td>    
- <td><?=$array["deskripsi"];?></td>   
- <td><?=$array["catatan"];?></td>
+ <td><?=$array["tanggal"];?></td>   
+ <td><?=$array["kode"];?></td>   
+ <td><?=$array["deskripsi"];?></td>    
+ <td><?=$array["deskripsi"];?></td>    
+ <td><?=$array["satuan"];?></td>    
+ <td><?=$array["stok_awal"];?></td>    
+ <td><?=$array["stok_masuk"];?></td>    
+ <td><?=$array["stok_keluar"];?></td>    
+ <td><?=$array["penyesuaian"];?></td>    
+ <td><?=$array["retur"];?></td>    
+ <td><?=$array["stok_final"];?></td>    
+ <td><?=$array["asal"];?></td>    
  <td>
-     <!-- tag konfirmasi untuk tambah data -->
-     <a href="tambahfinishgood.php?id=<?= $array["id"]; ?>">Tambah /</a>
+     <!-- tag konfirmasi untuk ubah data -->
+     <a href="ubahmutasipemasukan.php?id=<?= $array["id"]; ?>">ubah /</a>
 
      <!-- tag konfirmasi delete dan fungsi delete -->
-     <a href="ubahfinishgood.php?id=<?= $array["id"]; ?>">Ubah</a>
+     
+     <a href="hapusmutasipemasukan.php?id=<?= $array["id"]; ?>"  
+     onclick="return confirm('Are you sure you want to delete?')">Delete</a>
 </td>
 
 </tr>

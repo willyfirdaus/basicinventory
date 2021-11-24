@@ -62,8 +62,11 @@ placeholder ="masukan data pencarian" autocomplete="off">
     <th>Tanggal Registrasi</th>      
     <th>Item</th>
     <th>Deskripsi</th>
+    <th>HS Code</th>
+    <th>Satuan</th>
     <th>Request Qty</th>
-    <th>Remark</th>
+    <th>Asal Barang</th>
+    <th>Catatan</th>
 </tr>
 
 
@@ -75,8 +78,11 @@ placeholder ="masukan data pencarian" autocomplete="off">
  <td><?=$array["tanggal_registrasi"];?></td>   
  <td><?=$array["kode"];?></td>    
  <td><?=$array["deskripsi"];?></td>    
+ <td><?=$array["hs_code"];?></td>    
+ <td><?=$array["satuan"];?></td>    
  <td><?=$array["request_qty"];?></td>    
- <td><?=$array["remark"];?></td>
+ <td><?=$array["asal"];?></td>
+ <td><?=$array["catatan"];?></td>
  <td>
      <!-- tag konfirmasi untuk ubah data -->
      <a href="ubahpenerimaanpesanan.php?id=<?= $array["id"]; ?>">ubah /</a>

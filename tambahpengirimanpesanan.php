@@ -15,13 +15,13 @@ if ( isset ($_POST["submit"])) {
     if (ubah($_POST) > 0) {
         echo "<script>
         alert('data berhasil di tambah');
-        document.location.href = 'tambahpengirimanpesanan.php';
+        document.location.href = 'pengirimanpesanan.php';
         </script>
         ";
     } else {
         echo "<script>
         alert('data gagal di tambah pastikan supplier & currency terisi');
-        document.location.href = 'tambahpengirimanpesanan.php';
+        document.location.href = 'pengirimanpesanan.php';
         </script>
         ";
     }
@@ -136,6 +136,23 @@ if ( isset ($_POST["submit"])) {
 
 
 <li>
+    <label for="nomor_bukti_pengeluaran">Nomor Bukti Pengeluaran:</label>
+    <input type="text" name="nomor_bukti_pengeluaran" id="nomor_bukti_pengeluaran" 
+    value ="<?= $data ["nomor_bukti_pengeluaran"] ?>">
+</li>
+
+<li>
+    
+    <label for="tanggal_bukti_pengeluaran">Tanggal Bukti :</label>
+    <input name='tanggal_bukti_pengeluaran' type='date' class="form-control"  id="tanggal_bukti_pengeluaran"
+    value ="<?= $data ["tanggal_bukti_pengeluaran"] ?>"> 
+
+</li>
+
+
+
+
+<li>
     <label for="no_invoice">No Invoice:</label>
     <input type="text" name="no_invoice" id="no_invoice" 
     value ="<?= $data ["no_invoice"] ?>">
@@ -145,10 +162,17 @@ if ( isset ($_POST["submit"])) {
 <li>
     
     <label for="tanggal_invoice">Tanggal Invoice :</label>
-    <input value="2021-01-01" name='tanggal_invoice' type='date' class="form-control"  id="tanggal_invoice"
+    <input name='tanggal_invoice' type='date' class="form-control"  id="tanggal_invoice"
     value ="<?= $data ["tanggal_invoice"] ?>"> 
 
 </li>
+
+<li>
+    <label for="penerima_barang">penerima barang :</label>
+    <input type="text" name="penerima_barang" id="penerima_barang"
+    value ="<?= $data ["penerima_barang"] ?>">    
+</li>
+
 
 <li>
         <label for="buyer">buyer </label>
@@ -166,7 +190,7 @@ if ( isset ($_POST["submit"])) {
 
 
 <li>
-    <label for="no_surat_jalan">no_surat_jalan :</label>
+    <label for="no_surat_jalan">no surat jalan :</label>
     <input type="text" name="no_surat_jalan" id="no_surat_jalan"
     value ="<?= $data ["no_surat_jalan"] ?>">    
 </li>
@@ -175,7 +199,7 @@ if ( isset ($_POST["submit"])) {
 
 <li>
      <label for="stuffing_record">stuffing record :</label>
-    <input value="2021-01-01" name='stuffing_record' type='date' class="form-control"  id="stuffing_record"
+    <input name='stuffing_record' type='date' class="form-control"  id="stuffing_record"
     value ="<?= $data ["stuffing_record"] ?>"> 
 </li>
 
@@ -202,11 +226,11 @@ if ( isset ($_POST["submit"])) {
  <select name="status_bc" id="status_bc"   value ="<?= $data ["status_bc"] ?>" >
     <option value disable> pilih status BC </option>
     <option value="non bc"> non bc</option>
-    <option value="BC 25"> BC 25</option>
-    <option value="BC 261"> BC 261</option>
-    <option value="BC 27 Keluar"> BC 27 Keluar</option>
-    <option value="BC 30"> BC 30</option>
-    <option value="BC 41"> BC 41</option>
+    <option value="25"> BC 25</option>
+    <option value="261"> BC 261</option>
+    <option value="27"> BC 27 Keluar</option>
+    <option value="30"> BC 30</option>
+    <option value="41"> BC 41</option>
     </select></p>
 </li>
 
@@ -220,7 +244,7 @@ if ( isset ($_POST["submit"])) {
 
 <li>
     <label for="price">price:</label>
-    <input type="text" name="price" id="price"
+    <input type="number" name="price" id="price"
     value ="<?= $data ["price"] ?>">    
 </li>
 

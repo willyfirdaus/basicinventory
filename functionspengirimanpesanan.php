@@ -34,8 +34,11 @@ function ubah ($data) {
     global $db;
     //ambil data dari tiap elemen form
 $id = ($data["id"]);
+$nomor_bukti_pengeluaran = htmlspecialchars ($data["nomor_bukti_pengeluaran"]);
+$tanggal_bukti_pengeluaran = htmlspecialchars ($data["tanggal_bukti_pengeluaran"]);
 $no_invoice = htmlspecialchars ($data["no_invoice"]);
 $tanggal_invoice = htmlspecialchars ($data["tanggal_invoice"]);
+$penerima_barang = htmlspecialchars ($data["penerima_barang"]);
 $buyer = htmlspecialchars ($data["buyer"]);
 $alamat = htmlspecialchars ($data["alamat"]);
 $no_surat_jalan = htmlspecialchars ($data["no_surat_jalan"]);
@@ -55,8 +58,11 @@ $price = htmlspecialchars ($data["price"]);
 
 //query insert data ke data base
 $query = "UPDATE penerimaanpesanan SET
+        nomor_bukti_pengeluaran ='$nomor_bukti_pengeluaran',
+        tanggal_bukti_pengeluaran ='$tanggal_bukti_pengeluaran',
         no_invoice ='$no_invoice',
         tanggal_invoice = '$tanggal_invoice',
+        penerima_barang = '$penerima_barang',
         buyer = '$buyer',
         alamat = '$alamat',
         no_surat_jalan = '$no_surat_jalan',
@@ -83,6 +89,7 @@ function cari ($keyword) {
     $query = "SELECT * FROM penerimaanpesanan
     WHERE
     no_po LIKE '%$keyword%' OR
+    kode LIKE '%$keyword%' OR
     no_kontrak LIKE '%$keyword%'
     ";
     return query ($query);

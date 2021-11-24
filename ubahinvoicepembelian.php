@@ -186,7 +186,7 @@ if ( isset ($_POST["submit"])) {
 <li>
     <form >
     <label for="tanggal_po">tanggal Invoice :</label>
-    <input value="2021-01-01" name='tanggal_invoice' type='date' class="form-control"  id="tanggal_invoice"
+    <input name='tanggal_invoice' type='date' class="form-control"  id="tanggal_invoice"
     value ="<?= $data ["tanggal_invoice"] ?>"> Isikan tanggal invoice
     </form>
     </li>

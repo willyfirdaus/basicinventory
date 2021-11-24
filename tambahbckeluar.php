@@ -15,13 +15,13 @@ if ( isset ($_POST["submit"])) {
     if (ubah($_POST) > 0) {
         echo "<script>
         alert('data berhasil di tambah');
-        document.location.href = 'tambahbckeluar.php';
+        document.location.href = 'bckeluar.php';
         </script>
         ";
     } else {
         echo "<script>
         alert('data gagal di tambah pastikan supplier & currency terisi');
-        document.location.href = 'tambahbckeluar.php';
+        document.location.href = 'bckeluar.php';
         </script>
         ";
     }
@@ -67,7 +67,7 @@ if ( isset ($_POST["submit"])) {
 
 <li>
      <label for="tanggal">tanggal :</label>
-    <input value="2021-01-01" name='tanggal' type='date' class="form-control"  id="tanggal"
+    <input name='tanggal' type='date' class="form-control"  id="tanggal"
     value ="<?= $data ["tanggal"] ?>"> 
 </li>
 

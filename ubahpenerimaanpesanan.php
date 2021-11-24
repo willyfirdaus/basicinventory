@@ -48,42 +48,54 @@ if ( isset ($_POST["submit"])) {
   // release the key and calls the function
   // assigned to this event
   function GetDetail(str) {
-      if (str.length == 0) {
-          document.getElementById("deskripsi").value = "";
-          return;
-      }
-      else {
+            if (str.length == 0) {
+                document.getElementById("deskripsi").value = "";
+                document.getElementById("hs_code").value = "";
+                document.getElementById("satuan").value = "";
+                document.getElementById("asal").value = "";
+                return;
+            }
+            else {
+  
+                // Creates a new XMLHttpRequest object
+                var xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function () {
+  
+                    // Defines a function to be called when
+                    // the readyState property changes
+                    if (this.readyState == 4 && 
+                            this.status == 200) {
+                          
+                        // Typical action to be performed
+                        // when the document is ready
+                        var myObj = JSON.parse(this.responseText);
+  
+                       
+                        
+                        // Assign the value received to
+                        // deskripsi input field
+                        document.getElementById
+                        ("deskripsi").value = myObj[0];
 
-          // Creates a new XMLHttpRequest object
-          var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function () {
+                        document.getElementById
+                        ("hs_code").value = myObj[1];
 
-              // Defines a function to be called when
-              // the readyState property changes
-              if (this.readyState == 4 && 
-                      this.status == 200) {
-                    
-                  // Typical action to be performed
-                  // when the document is ready
-                  var myObj = JSON.parse(this.responseText);
+                        document.getElementById
+                        ("satuan").value = myObj[3]
+                        
+                        document.getElementById
+                        ("asal").value = myObj[4]
 
-                 
-                  
-                  // Assign the value received to
-                  // deskripsi input field
-                  document.getElementById
-                  ("deskripsi").value = myObj[0];
-
-                      // Returns the response data as a
-                  // string and store this array in
-                  // a variable assign the value 
-                  // received to hs code input field
+                            // Returns the response data as a
+                        // string and store this array in
+                        // a variable assign the value 
+                        // received to hs code input field
 
 
-               
-              }
-          };
-
+                     
+                    }
+                };
+  
           // xhttp.open("GET", "ambil data pada file", true);
           xmlhttp.open("GET", "tarikdatapurchaseorder.php?kode_material=" + str, true);
             
@@ -98,8 +110,7 @@ if ( isset ($_POST["submit"])) {
     <h1>Ubah Penerimaan Pesanan</h1>
     <form action="" method="post"> 
     <input type="hidden" name="id" value="<?= $data ["id"] ; ?>">           
-    <input type="hidden" name="qty_finish_good" value="<?= $data ["qty_finish_good"] ; ?>">           
-    <input type="hidden" name="tanggal_finish" value="<?= $data ["tanggal_finish"] ; ?>">           
+
 <ul> 
 <li>
     <label for="job_order">Job Order:</label>
@@ -109,7 +120,7 @@ if ( isset ($_POST["submit"])) {
 <li>
     <form >
     <label for="tanggal_registrasi">Tanggal Registrasi :</label>
-    <input value="2021-01-01" name='tanggal_registrasi' type='date' class="form-control"  id="tanggal_registrasi"
+    <input name='tanggal_registrasi' type='date' class="form-control"  id="tanggal_registrasi"
     value ="<?= $data ["tanggal_registrasi"] ?>"> 
     </form>
     </li>
@@ -130,6 +141,19 @@ if ( isset ($_POST["submit"])) {
 </li>
 
 <li>
+    <label for="satuan" >satuan  :</label>
+    <input type="text" name="satuan" id="satuan" 
+    value ="<?= $data ["satuan"] ?>">    
+</li>
+
+<li>
+    <label for="hs_code" >hs_code  :</label>
+    <input type="text" name="hs_code" id="hs_code" 
+    value ="<?= $data ["hs_code"] ?>">    
+</li>
+
+
+<li>
     <label for="request_qty">request qty :</label>
     <input type="number" name="request_qty" id="request_qty"
     value ="<?= $data ["request_qty"] ?>">    
@@ -137,9 +161,15 @@ if ( isset ($_POST["submit"])) {
 
 
 <li>
-    <label for="remark" >remark  :</label>
-    <input type="text" name="remark" id="remark" 
-    value ="<?= $data ["remark"] ?>">    
+    <label for="asal" >asal  :</label>
+    <input type="text" name="asal" id="asal" 
+    value ="<?= $data ["asal"] ?>">    
+</li>
+
+<li>
+    <label for="catatan" >catatan  :</label>
+    <input type="text" name="catatan" id="catatan" 
+    value ="<?= $data ["catatan"] ?>">    
 </li>
 
 

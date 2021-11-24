@@ -8,7 +8,7 @@ if ( isset ($_POST["submit"])) {
     if (tambah($_POST) > 0) {
         echo "<script>
         alert('data berhasil di tambahkan');
-      
+        document.location.href = 'tambahpurchaseorder.php';
         </script>
         ";
     } else {
@@ -158,7 +158,7 @@ if ( isset ($_POST["submit"])) {
 <li>
 <form>
 <label for="tanggal_po">tanggal po :</label>
-<input value="2021-01-01" name='tanggal_po' type='date' class="form-control"  id="tanggal_po" required >
+<input name='tanggal_po' type='date' class="form-control"  id="tanggal_po" required >
 </form>
 </li>
 

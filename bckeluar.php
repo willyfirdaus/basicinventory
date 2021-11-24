@@ -66,7 +66,7 @@ placeholder ="masukan data pencarian" autocomplete="off">
     <th>kode</th>
     <th>deskripsi</th>
     <th>qty finish good</th>
-    <th>remark</th>
+    <th>catatan</th>
 
 </tr>
 
@@ -87,7 +87,7 @@ placeholder ="masukan data pencarian" autocomplete="off">
  <td><?=$array["kode"];?></td>
  <td><?=$array["deskripsi"];?></td>
  <td><?=$array["qty_finish_good"];?></td>
- <td><?=$array["remark"];?></td>
+ <td><?=$array["catatan"];?></td>
  <td>
      <!-- tag konfirmasi untuk ubah data -->
      <a href="tambahbckeluar.php?id=<?= $array["id"]; ?>">Tambah BC keluar /</a>

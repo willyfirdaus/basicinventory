@@ -54,9 +54,12 @@ placeholder ="masukan data pencarian" autocomplete="off">
 </form>
 <table  border="5" cellpadding="10" cellspacing="10" >
 <tr bgcolor="Cornsilk"  >
-    <th>No</th> 
+    <th>No</th>  
+    <th>No Bukti Pengeluaran</th>  
+    <th>Tanggal Bukti Pengeluaran</th>  
     <th>No invoice</th>  
     <th>Tanggal Invoice</th>      
+    <th>Penerima Barang</th>
     <th>Buyer</th>
     <th>alamat</th>
     <th>no surat jalan</th>
@@ -79,8 +82,11 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <?php foreach ( $arrays as $array ) : ?>
 <tr>
 <td><?= $i ?> </td>  
+ <td><?=$array["nomor_bukti_pengeluaran"];?></td>   
+ <td><?=$array["tanggal_bukti_pengeluaran"];?></td>   
  <td><?=$array["no_invoice"];?></td>   
  <td><?=$array["tanggal_invoice"];?></td>   
+ <td><?=$array["penerima_barang"];?></td>   
  <td><?=$array["buyer"];?></td>   
  <td><?=$array["alamat"];?></td>   
  <td><?=$array["no_surat_jalan"];?></td>   

@@ -62,6 +62,7 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <th>Kategori</th>
 <th>Kode Barang</th>
 <th>Pembeli</th>
+<th>Penerima Barang</th>
 <th>Nomor Container</th>
 <th>Nomor Aju</th>
 </tr>
@@ -78,14 +79,15 @@ placeholder ="masukan data pencarian" autocomplete="off">
  <td><?=$array1["hs_code"];?></td> 
  <td><?=$array1["deskripsi"];?></td>
  <td><?=$array1["qty_finish_good"];?></td>
- <td><?=$array1["kode_satuan"];?></td>
+ <td><?=$array1["satuan"];?></td>
  <td><?=$array1["amount_idr"];?></td>
  <td><?=$array1["currency_rate"];?></td>
  <td><?=$array1["amount_usd"];?></td>
- <td><?=$array1["asal_barang"];?></td>
+ <td><?=$array1["asal"];?></td>
  <td><?=$array1["deskripsi"];?></td>
  <td><?=$array1["kode"];?></td>
  <td><?=$array1["buyer"];?></td>
+ <td><?=$array1["penerima_barang"];?></td>
  <td><?=$array1["no_container"];?></td>
  <td><?=$array1["no_aju"];?></td>
 

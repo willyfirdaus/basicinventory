@@ -185,18 +185,12 @@ if ( isset ($_POST["submit"])) {
 <br>
 <br>
 
-<h3>isi Detail BC Masuk Disini</h3>
+<h3>ubah Detail BC Masuk Disini</h3>
 
 <li>
-    <label for="status_bc">status bc :</label>
- <p><select name="status_bc" id="status_bc"   value ="<?= $data ["status_bc"] ?>" required>
-    <option value="non bc"> non bc</option>
-    <option value="23"> BC 23 Import</option>
-    <option value="262"> BC 262</option>
-    <option value="23"> BC 23 Import PJT</option>
-    <option value="27"> BC 27 masuk</option>
-    <option value="40"> BC 40</option>
-    </select></p>
+    <label for="status_bc">status bc:</label>
+    <input type="text" name="status_bc" id="status_bc" 
+    value ="<?= $data ["status_bc"] ?>">
 </li>
 
 <li>

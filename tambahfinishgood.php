@@ -109,10 +109,22 @@ if ( isset ($_POST["submit"])) {
 <li>
     <form >
     <label for="tanggal_finish">Tanggal Finish :</label>
-    <input value="2021-01-01" name='tanggal_finish' type='date' class="form-control"  id="tanggal_finish"
+    <input  name='tanggal_finish' type='date' class="form-control"  id="tanggal_finish"
     value ="<?= $data ["tanggal_finish"] ?>"> 
     </form>
 </li>
+
+
+
+<br><br>
+<li>
+    <label for="request_qty">request qty :</label>
+    <input type="number" name="request_qty" id="request_qty" readonly
+    value ="<?= $data ["request_qty"] ?>">    
+</li>
+
+
+
 
 <li>
     <label for="job_order">Job Order:</label>
@@ -133,11 +145,7 @@ if ( isset ($_POST["submit"])) {
     value ="<?= $data ["deskripsi"] ?>">    
 </li>
 
-<li>
-    <label for="request_qty">request qty :</label>
-    <input type="number" name="request_qty" id="request_qty" readonly
-    value ="<?= $data ["request_qty"] ?>">    
-</li>
+
 
 
 <br>

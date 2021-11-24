@@ -132,6 +132,23 @@ if( !isset($_SESSION["login"]) ) {
       <li>
         <div class="iocn-link">
           <a href="#">
+            <i class='bx bx-analyse' ></i>
+            <span class="link_name">Mutasi Barang</span>
+          </a>
+          <i class='bx bxs-chevron-down arrow' ></i>
+        </div>
+        <ul class="sub-menu">
+          <li><a class="link_name" href="#">Mutasi Barang</a></li>
+          <li><a href="mutasipemasukan.php">Mutasi Pemasukan</a></li>
+          <li><a href="mutasipengeluaran.php">Mutasi Pengeluaran</a></li>
+          <li><a href="mutasiadjustment.php">Mutasi Adjustment</a></li>
+        </ul>
+      </li>
+
+
+      <li>
+        <div class="iocn-link">
+          <a href="#">
             <i class='bx bx-calendar-edit' ></i>
             <span class="link_name">ProsesCMT</span>
           </a>
@@ -200,7 +217,7 @@ if( !isset($_SESSION["login"]) ) {
           <li><a class="link_name" href="#">Laporan</a></li>
           <li><a href="stockreal.php">Stock Real</a></li>
           <li><a href="stockdokumen.php">Stock Dokumen</a></li>
-          <li><a href="mutasibarang.php">Mutasi Barang</a></li>
+          <li><a href="">Mutasi Barang</a></li>
           <li><a href="bcpemasukanbarang.php">BC Pemasukan Barang</a></li>
           <li><a href="bcpengeluaranbarang.php">BC Pengeluaran Barang</a></li>
           <li><a href="posisibarangwip.php">Posisi Barang WIP</a></li>
