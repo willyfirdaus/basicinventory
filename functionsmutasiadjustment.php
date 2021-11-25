@@ -95,7 +95,7 @@ function ubah ($data) {
     $deskripsi = htmlspecialchars ($data["deskripsi"]);
     $satuan = htmlspecialchars ($data["satuan"]);
     $stok_awal = htmlspecialchars ($data["stok_awal"]);
-    $stok_masuk = htmlspecialchars ($data["stok_masuk"]);
+    $stok_adjustment = htmlspecialchars ($data["stok_adjustment"]);
     $stok_final = htmlspecialchars ($data["stok_final"]);
     $asal = htmlspecialchars ($data["asal"]);
 
@@ -109,7 +109,7 @@ $query = "UPDATE mutasibarang SET
         deskripsi ='$deskripsi',
         satuan ='$satuan',
         stok_awal ='$stok_awal',
-        stok_masuk ='$stok_masuk',
+        stok_adjustment ='$stok_adjustment',
         stok_final ='$stok_final',
         asal = '$asal'
         

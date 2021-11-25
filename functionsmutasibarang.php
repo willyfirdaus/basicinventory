@@ -29,15 +29,34 @@ function queryObject ($query) {
     }
 }
 
+
+
+
 //function search
 function cari ($keyword) {
-    $query = "SELECT * FROM datamaster
+    $query = "SELECT * FROM mutasibarang
     WHERE
-    kode_material LIKE '%$keyword%' OR
-    nama_barang LIKE '%$keyword%'
+    kode LIKE '%$keyword%' OR
+    tanggal LIKE '%$keyword%'
     ";
     return query ($query);
 }
+
+
+//function search
+function CariTanggal ($cari_tanggal) {
+    $query = "SELECT * FROM mutasibarang
+    WHERE
+    kode LIKE '%$keyword%' OR
+    tanggal LIKE '%$keyword%'
+    ";
+    return query ($query);
+}
+
+
+
+
+
 
 
 ?>

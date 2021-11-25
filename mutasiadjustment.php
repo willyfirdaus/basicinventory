@@ -1,30 +1,14 @@
 <?php
 //koneksi ke database
-require 'functionsmutasibarang.php';
-
-
+require 'functionsmutasiadjustment.php';
 //ambil data dari tabel basicinventory / query data basicinventory
-// $arrays1 = query ("SELECT *, (SELECT SUM(qty_real) FROM `purchaseorder` WHERE kode = dm.kode_material) as stok_masuk, COALESCE((SELECT SUM(qty_out) FROM `requestproduksi` WHERE kode = dm.kode_material), 0) as stok_keluar FROM datamaster as dm ORDER BY id DESC");
-
-
-
 $arrays = query ("SELECT * FROM mutasibarang ORDER BY id DESC");
-
 
 //tombol cari di tekan
 if (isset ($_POST["cari"])) {
     $arrays = cari ($_POST["keyword"]);
 
 }
-
-
-//cari berdasarkan tanggal cari di tekan
-if (isset ($_POST["cari"])) {
-    $arrays = cari ($_POST["keyword"]);
-
-}
-
-
 
 //ambil data fetch basic inventory dari object result
 // mysqli_fetch_row() mengembalikan array numerik
@@ -40,8 +24,6 @@ if (isset ($_POST["cari"])) {
 // while ($datamaster = mysqli_fetch_array($result)){
 // var_dump($datamaster);
 // }
-
-// echo json_encode(KodeMaterial());
 ?>
 
 <!DOCTYPE html>
@@ -50,25 +32,32 @@ if (isset ($_POST["cari"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>mutasi barang</title>
+    <title>Mutasi adjustment</title>
 
     
 </head>
 <body>
 
-<h1>mutasi barang</h1>
+<h1>Mutasi adjustment</h1>
+<a href="tambahmutasiadjustment.php">Tambah Mutasi adjustment</a>
+<h>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</h>
 <a href="index.php">Kembali ke Home</a>
 <br><br>
 <form action="" method="post">
 <input type="text" name="keyword" size="40" autocfocus
 placeholder ="masukan data pencarian" autocomplete="off">
 <button type="submit" name="cari">cari</button>
+<a href="mutasiadjustment.php"><button type="submit" name="cari">Reset</button></a>
+ 
 
+<p></p>
 
-
-<p></p> </form> 
+</form>
 <table  border="5" cellpadding="10" cellspacing="10" >
-<tr bgcolor="Cornsilk"  > 
+<tr bgcolor="Cornsilk"  >
+<th>No</th>
 <th>tanggal</th>
 <th>kode material</th> 
 <th>kategori</th> 
@@ -81,32 +70,38 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <th>retur</th> 
 <th>stok final</th>
 <th>asal</th> </tr>
+</tr>
 
 
-
-
-
-<?php foreach  ( $arrays as $array ) : ?>
-
+<?php $i = 1; ?>
+<?php foreach ( $arrays as $array ) : ?>
 <tr>
-    <td><?= $array['tanggal'] ?></td> 
-    <td><?= $array['kode'] ?></td> 
-    <td><?= $array['deskripsi'] ?></td> 
-    <td><?= $array['deskripsi'] ?></td> 
-    <td><?= $array['satuan'] ?></td>
-    <td><?= $array['stok_awal'] ?></td> 
-    <td><?= $array['stok_masuk'] ?></td>
-    <td><?= $array['stok_keluar'] ?></td>
-    <td><?= $array['penyesuaian'] ?></td>
-    <td><?= $array['retur'] ?></td>
-    <td><?= $array['stok_final'] ?></td>
-    <td><?= $array['asal'] ?></td>
-   
+<td><?= $i ?> </td>  
+ <td><?=$array["tanggal"];?></td>   
+ <td><?=$array["kode"];?></td>   
+ <td><?=$array["deskripsi"];?></td>    
+ <td><?=$array["deskripsi"];?></td>    
+ <td><?=$array["satuan"];?></td>    
+ <td><?=$array["stok_awal"];?></td>    
+ <td><?=$array["stok_masuk"];?></td>    
+ <td><?=$array["stok_keluar"];?></td>    
+ <td><?=$array["penyesuaian"];?></td>    
+ <td><?=$array["retur"];?></td>    
+ <td><?=$array["stok_final"];?></td>    
+ <td><?=$array["asal"];?></td>    
+ <td>
+     <!-- tag konfirmasi untuk ubah data -->
+     <a href="ubahmutasiadjustment.php?id=<?= $array["id"]; ?>">ubah /</a>
+
+     <!-- tag konfirmasi delete dan fungsi delete -->
+     
+     <a href="hapusmutasiadjustment.php?id=<?= $array["id"]; ?>"  
+     onclick="return confirm('Are you sure you want to delete?')">Delete</a>
+</td>
 
 </tr>
+<?php $i++; ?>
 <?php endforeach; ?>
-
-
 
 </table>
 </body>
