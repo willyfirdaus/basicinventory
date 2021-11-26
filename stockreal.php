@@ -8,8 +8,11 @@ require 'functionsstockreal.php';
 
 $data = query ("SELECT * FROM datamaster as dm ORDER BY id DESC");
 
-
-
+if (isset($_GET['print'])) {
+    $file="Laporan.xls";
+    header("Content-type: application/excel");
+    header("Content-Disposition: attachment; filename=$file");
+}
 
 function hitungQtyReal($kode = null)
 {
@@ -84,7 +87,7 @@ if (isset ($_POST["cari"])) {
     
 </head>
 <body>
-
+<?php if (!isset($_GET['print'])) : ?>
 <h1>stock real</h1>
 <a href="index.php">Kembali ke Home</a>
 <br><br>
@@ -94,11 +97,18 @@ placeholder ="masukan data pencarian" autocomplete="off">
 <button type="submit" name="cari">cari</button>
 
 
+
+<input type="date" name="tanggal" size="40" >
+
+<a href="stockreal.php?print">Print</a>
+
+
 <p></p>
 
 </form>
-<table  border="5" cellpadding="10" cellspacing="10" >
-<tr bgcolor="Cornsilk"  >
+<?php endif ?>
+<table <?php if (!isset($_GET['print'])) {echo 'border="5"';} ?>  cellpadding="10" cellspacing="10" >
+<tr <?php if (!isset($_GET['print'])) {echo 'bgcolor="Cornsilk"';} ?>  >
     <th>kode material</th>  
     <th>kode material BC</th>    
     <th>Kategori</th>      

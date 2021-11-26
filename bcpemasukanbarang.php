@@ -6,16 +6,14 @@ require 'functionsbcpemasukanbarang.php';
 //ambil data dari tabel basicinventory / query data basicinventory
 // $arrays1 = query ("SELECT *, (SELECT SUM(qty_real) FROM `purchaseorder` WHERE kode = dm.kode_material) as stok_masuk, COALESCE((SELECT SUM(qty_out) FROM `requestproduksi` WHERE kode = dm.kode_material), 0) as stok_keluar FROM datamaster as dm ORDER BY id DESC");
 
-$data = query ("SELECT * FROM purchaseorder ORDER BY id DESC");
-
-
-
 
 //tombol cari di tekan
-if (isset ($_POST["cari"])) {
-    $arrays = cari ($_POST["keyword"]);
-
-}
+$data = cari ();
+// if (isset ($_POST["cari"])) {
+//     // print_r($data);
+// }else{
+//     $data = query ("SELECT * FROM purchaseorder ORDER BY id DESC");
+// }
 
 
 
@@ -36,11 +34,24 @@ if (isset ($_POST["cari"])) {
 <h1>BC Pemasukan Barang</h1>
 <a href="index.php">Kembali ke Home</a>
 <br><br>
-<form action="" method="post">
-<input type="text" name="keyword" size="40" autocfocus
+<form action="" method="POST">
+<input type="text" value="<?= $_POST["keyword"] ?? '' ?>" name="keyword" size="40" autocfocus
 placeholder ="masukan data pencarian" autocomplete="off">
-<button type="submit" name="cari">cari</button>
 
+
+
+<input type="date" value="<?= $_POST["tanggal_awal"] ?? '' ?>" name="tanggal_awal" size="40" >
+<input type="date" value="<?= $_POST["tanggal_akhir"] ?? '' ?>" name="tanggal_akhir" size="40" >
+
+<select name="jenis_dok" id="">
+    <option value="" disabled selected>Pilih Jenis Dokumen</option>
+    <option value="23">23</option>
+    <option value="30">30</option>
+    <option value="40">40</option>
+</select>
+
+<button type="submit" name="cari">Filter</button>
+<a href="export_bc.php">Export</a>
 
 
 <p></p> </form> 

@@ -1,6 +1,6 @@
 <?php
 //koneksi ke database
-require 'functionsmutasibarang.php';
+require 'functionsakun.php';
 
 
 //ambil data dari tabel basicinventory / query data basicinventory
@@ -8,7 +8,7 @@ require 'functionsmutasibarang.php';
 
 
 
-$arrays = query ("SELECT * FROM mutasibarang ORDER BY id DESC");
+$arrays = query ("SELECT * FROM akun ORDER BY id DESC");
 
 
 //tombol cari di tekan

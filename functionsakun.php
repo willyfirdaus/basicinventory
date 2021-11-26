@@ -23,7 +23,7 @@ function queryObject ($query) {
         echo mysqli_error($db);
     }else{
         while ( $row = mysqli_fetch_assoc($result) ) {
-            $rows = $row;
+            $rows[] = $row;
         }
         return $rows;
     }
@@ -32,18 +32,18 @@ function queryObject ($query) {
 
 
 
-
-
-
 //function search
 function cari ($keyword) {
-    $query = "SELECT * FROM purchaseorder
+    $query = "SELECT * FROM akun
     WHERE
-    no_po LIKE '%$keyword%' OR
-    no_kontrak LIKE '%$keyword%'
+    kode LIKE '%$keyword%' OR
+    tanggal LIKE '%$keyword%'
     ";
     return query ($query);
 }
+
+
+
 
 
 ?>
